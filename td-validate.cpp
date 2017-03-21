@@ -706,7 +706,10 @@ bool check_connectedness(tree_decomposition& T)
       if (head==parent_stack.top()) parent_stack.pop();
       unsigned parent = parent_stack.top();
       for (auto it = T.get_bag(head).begin(); it != T.get_bag(head).end(); ++it) {
-        if (forgotten[*it-1] == true) return false;
+        if (forgotten[*it-1] == true){
+	  std::cout << "vertex=" <<  *it-1 << std::endl;
+	  return false;
+	}
         if (parent != NIL && T.get_bag(parent).find(*it) == T.get_bag(parent).end()) {
           forgotten[*it-1] = true;
         }
